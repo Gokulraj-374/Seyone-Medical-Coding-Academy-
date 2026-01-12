@@ -74,18 +74,6 @@ const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
-            <Link
-              to="/"
-              className={`px-4 py-2 text-[11px] font-black uppercase tracking-[0.1em] transition-all rounded-full relative group flex items-center h-10 ${isActive('/')
-                ? 'text-[#76BC21] bg-[#76BC21]/5'
-                : 'text-slate-600 hover:text-[#1A1A1B] hover:bg-slate-50'
-                }`}
-            >
-              <i className="fas fa-house-chimney text-sm relative z-10"></i>
-              {isActive('/') && (
-                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#76BC21] rounded-full animate-pulse"></span>
-              )}
-            </Link>
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -154,17 +142,6 @@ const Header: React.FC = () => {
           </button>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className={`md:hidden w-11 h-11 flex items-center justify-center rounded-full transition-all duration-300 z-50 ${isOpen ? 'bg-[#1A1A1B] text-white rotate-90 shadow-lg' : 'bg-slate-100 text-slate-600'
-            }`}
-          onClick={() => setIsOpen(!isOpen)}
-          aria-expanded={isOpen}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-        >
-          <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars-staggered'} text-lg`}></i>
-        </button>
-
         {/* Mobile Navigation Drawer */}
         <div
           className={`md:hidden fixed inset-x-4 top-[90px] bg-white rounded-[2.5rem] shadow-[0_30px_70px_rgba(0,0,0,0.25)] border border-slate-100 p-6 flex flex-col transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${isOpen
@@ -173,20 +150,6 @@ const Header: React.FC = () => {
             }`}
         >
           <div className="flex flex-col space-y-2">
-            <Link
-              to="/"
-              className={`flex items-center justify-between p-4 rounded-2xl transition-all active:scale-[0.98] ${isActive('/') ? 'bg-[#76BC21] text-white shadow-lg shadow-[#76BC21]/30' : 'text-slate-600 hover:bg-slate-50'
-                }`}
-            >
-              <div className="flex items-center gap-4">
-                <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isActive('/') ? 'bg-white/20' : 'bg-slate-100'}`}>
-                  <i className="fas fa-house-chimney text-xs"></i>
-                </div>
-                <span className="font-black text-[11px] uppercase tracking-[0.15em]">Home</span>
-              </div>
-              <i className="fas fa-chevron-right text-[10px] opacity-40"></i>
-            </Link>
-
             {navLinks.map((link) => (
               <Link
                 key={link.path}
