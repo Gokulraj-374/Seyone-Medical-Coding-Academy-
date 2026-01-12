@@ -25,7 +25,6 @@ const Logo: React.FC<LogoProps> = ({
           src="/full-logo-transparent.png"
           alt="Seyone Medical Coding Academy"
           className="h-full w-auto object-contain"
-          style={light ? { filter: 'brightness(0) invert(1)' } : undefined}
         />
       </div>
     </div>
