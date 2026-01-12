@@ -1,7 +1,7 @@
 
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from './Logo';
 
 const Footer: React.FC = () => {
   const MAPS_URL = "https://maps.app.goo.gl/gK8Mbww8KQfa2wDH8?g_st=aw";
@@ -13,7 +13,11 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="col-span-1 md:col-span-1">
           <Link to="/" className="mb-6 block">
-            <Logo light className="h-10" />
+            <img
+              src="/footer-logo.png"
+              alt="Seyone Medical Coding Academy"
+              className="h-12 w-auto"
+            />
           </Link>
           <p className="text-sm leading-relaxed mb-6">
             Empowering healthcare professionals through world-class medical coding education and career placement. Dream, Learn, Achieve.
