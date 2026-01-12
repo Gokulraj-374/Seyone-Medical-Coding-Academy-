@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
             <img
               src="/footer-logo.png"
               alt="Seyone Medical Coding Academy"
-              className="h-12 w-auto"
+              className="h-16 w-auto max-w-xs"
             />
           </Link>
           <p className="text-sm leading-relaxed mb-6">
