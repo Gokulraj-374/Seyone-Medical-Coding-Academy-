@@ -12,6 +12,7 @@ const Header: React.FC = () => {
 
   const navLinks = [
     { name: 'Courses', path: '/courses', icon: 'fa-book-open' },
+    { name: 'Stories', path: '/#success-stories', icon: 'fa-star' },
     { name: 'Dashboard', path: '/dashboard', icon: 'fa-user-graduate' },
     { name: 'About', path: '/about', icon: 'fa-users' },
     { name: 'Contact', path: '/contact', icon: 'fa-paper-plane' },
@@ -78,6 +79,15 @@ const Header: React.FC = () => {
               <Link
                 key={link.path}
                 to={link.path}
+                onClick={(e) => {
+                  if (link.path.startsWith('/#')) {
+                    if (location.pathname === '/') {
+                      e.preventDefault();
+                      const id = link.path.split('#')[1];
+                      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }
+                }}
                 className={`px-4 py-2 text-[11px] font-black uppercase tracking-[0.1em] transition-all rounded-full relative group flex items-center h-10 ${isActive(link.path)
                   ? 'text-[#76BC21] bg-[#76BC21]/5'
                   : 'text-slate-600 hover:text-[#1A1A1B] hover:bg-slate-50'
@@ -154,6 +164,18 @@ const Header: React.FC = () => {
               <Link
                 key={link.path}
                 to={link.path}
+                onClick={(e) => {
+                  if (link.path.startsWith('/#')) {
+                    if (location.pathname === '/') {
+                      e.preventDefault();
+                      const id = link.path.split('#')[1];
+                      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                      setIsOpen(false);
+                    }
+                  } else {
+                    setIsOpen(false);
+                  }
+                }}
                 className={`flex items-center justify-between p-4 rounded-2xl transition-all active:scale-[0.98] ${isActive(link.path) ? 'bg-[#76BC21] text-white shadow-lg shadow-[#76BC21]/30' : 'text-slate-600 hover:bg-slate-50'
                   }`}
               >

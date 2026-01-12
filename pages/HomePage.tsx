@@ -10,7 +10,7 @@ const HomePage: React.FC = () => {
       <section className="relative bg-[#1A1A1B] py-20 lg:py-32 overflow-hidden">
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-[#76BC21]/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-slate-400/5 rounded-full blur-3xl"></div>
-        
+
         <div className="container mx-auto px-4 relative flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-1/2 text-white mb-12 lg:mb-0">
             <div className="inline-block bg-[#76BC21]/20 text-[#76BC21] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm border border-[#76BC21]/30">
@@ -32,12 +32,12 @@ const HomePage: React.FC = () => {
             </div>
           </div>
           <div className="lg:w-1/2 relative">
-             <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-8 border-white/5 group">
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200" alt="Medical Professional" className="w-full h-[450px] object-cover transform transition-transform group-hover:scale-105 duration-700" />
-                <div className="absolute inset-0 bg-[#76BC21]/5 group-hover:bg-transparent transition-colors"></div>
-             </div>
-             {/* Decorative element */}
-             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#76BC21] rounded-2xl -z-0 opacity-50"></div>
+            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-8 border-white/5 group">
+              <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200" alt="Medical Professional" className="w-full h-[450px] object-cover transform transition-transform group-hover:scale-105 duration-700" />
+              <div className="absolute inset-0 bg-[#76BC21]/5 group-hover:bg-transparent transition-colors"></div>
+            </div>
+            {/* Decorative element */}
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#76BC21] rounded-2xl -z-0 opacity-50"></div>
           </div>
         </div>
       </section>

@@ -48,19 +48,41 @@ const TESTIMONIALS = [
 
 const TestimonialSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const timerRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  const next = () => setActiveIndex((prev) => (prev + 1) % TESTIMONIALS.length);
-  const prev = () => setActiveIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  const startTimer = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % TESTIMONIALS.length);
+    }, 10000);
+  };
+
+  const handleNext = () => {
+    setActiveIndex((current) => (current + 1) % TESTIMONIALS.length);
+    startTimer();
+  };
+
+  const handlePrev = () => {
+    setActiveIndex((current) => (current - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+    startTimer();
+  };
+
+  const handleDotClick = (index: number) => {
+    setActiveIndex(index);
+    startTimer();
+  };
 
   useEffect(() => {
-    const timer = setInterval(next, 10000); // Slightly longer dwell time for reading
-    return () => clearInterval(timer);
+    startTimer();
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, []);
 
   const current = TESTIMONIALS[activeIndex];
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section id="success-stories" className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-black text-slate-800 mb-4 tracking-tight">Success Stories</h2>
@@ -73,7 +95,7 @@ const TestimonialSection: React.FC = () => {
             <div className="absolute top-12 left-12 text-7xl text-[#76BC21]/10 pointer-events-none">
               <i className="fas fa-quote-left"></i>
             </div>
-            
+
             <div className="flex flex-col items-center text-center relative z-10">
               {/* Star Rating */}
               <div className="flex space-x-1 mb-6 animate-in fade-in zoom-in duration-700">
@@ -105,16 +127,16 @@ const TestimonialSection: React.FC = () => {
 
           {/* Navigation Controls */}
           <div className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-12 z-20">
-            <button 
-              onClick={prev}
+            <button
+              onClick={handlePrev}
               className="w-14 h-14 rounded-2xl bg-white shadow-xl border border-slate-100 flex items-center justify-center text-[#1A1A1B] hover:text-[#76BC21] transition-all hover:scale-110 active:scale-95 group"
             >
               <i className="fas fa-chevron-left group-hover:-translate-x-0.5 transition-transform"></i>
             </button>
           </div>
           <div className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-12 z-20">
-            <button 
-              onClick={next}
+            <button
+              onClick={handleNext}
               className="w-14 h-14 rounded-2xl bg-white shadow-xl border border-slate-100 flex items-center justify-center text-[#1A1A1B] hover:text-[#76BC21] transition-all hover:scale-110 active:scale-95 group"
             >
               <i className="fas fa-chevron-right group-hover:translate-x-0.5 transition-transform"></i>
@@ -126,10 +148,9 @@ const TestimonialSection: React.FC = () => {
             {TESTIMONIALS.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setActiveIndex(i)}
-                className={`h-2.5 rounded-full transition-all duration-500 ${
-                  activeIndex === i ? 'w-16 bg-[#76BC21] shadow-lg shadow-[#76BC21]/20' : 'w-2.5 bg-slate-200 hover:bg-slate-300'
-                }`}
+                onClick={() => handleDotClick(i)}
+                className={`h-2.5 rounded-full transition-all duration-500 ${activeIndex === i ? 'w-16 bg-[#76BC21] shadow-lg shadow-[#76BC21]/20' : 'w-2.5 bg-slate-200 hover:bg-slate-300'
+                  }`}
               />
             ))}
           </div>
