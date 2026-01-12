@@ -87,12 +87,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 mt-16 pt-8 border-t border-slate-800 text-center text-xs">
-        <p>&copy; {new Date().getFullYear()} Seyone Medical Coding Academy. Hosted at <a href={DOMAIN_URL} className="text-[#76BC21] hover:underline">seyone.in</a></p>
-        <div className="mt-4 flex flex-col items-center space-y-2 opacity-50 hover:opacity-100 transition-opacity">
-          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#76BC21] inline-flex items-center">
-            <i className="fab fa-github mr-2"></i> View Project on GitHub
-          </a>
-        </div>
+        <p>&copy; {new Date().getFullYear()} Seyone Medical Coding Academy.</p>
       </div>
     </footer>
   );
