@@ -239,13 +239,6 @@ const Header: React.FC = () => {
               )}
             </div>
           </div>
-
-          <div className="mt-8 text-center">
-            <div className="h-px w-12 bg-slate-200 mx-auto mb-4"></div>
-            <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em]">
-              Seyone • Dream • Achieve
-            </p>
-          </div>
         </div>
       </header>
     </div>
