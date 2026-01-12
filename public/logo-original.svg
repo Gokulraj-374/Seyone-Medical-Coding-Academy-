@@ -1,0 +1,23 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black Segment (Top-Left) -->
+  <path 
+    d="M75 25 L50 10 L20 28 L20 60 L32 68 L32 40 L50 30 L65 38" 
+    stroke="#1A1A1B" 
+    stroke-width="8" 
+    stroke-linecap="round" 
+    stroke-linejoin="round" 
+  />
+  <circle cx="65" cy="38" r="5" fill="#1A1A1B" />
+  <circle cx="75" cy="25" r="5" fill="#1A1A1B" />
+
+  <!-- Green Segment (Bottom-Right) -->
+  <path 
+    d="M25 75 L50 90 L80 72 L80 40 L68 32 L68 60 L50 70 L35 62" 
+    stroke="#76BC21" 
+    stroke-width="8" 
+    stroke-linecap="round" 
+    stroke-linejoin="round" 
+  />
+  <circle cx="35" cy="62" r="5" fill="#76BC21" />
+  <circle cx="25" cy="75" r="5" fill="#76BC21" />
+</svg>

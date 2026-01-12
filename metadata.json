@@ -1,0 +1,8 @@
+{
+  "name": "Seyone Medical Coding Academy",
+  "short_name": "Seyone Academy",
+  "description": "The official digital platform for Seyone Medical Coding Academy (seyone.in). Expert education, AI advising, and career placement.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
