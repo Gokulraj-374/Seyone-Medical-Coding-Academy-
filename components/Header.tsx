@@ -142,7 +142,7 @@ const Header: React.FC = () => {
 
           {/* Mobile Toggle */}
           <button
-            className={`md:hidden w-11 h-11 flex items-center justify-center rounded-full transition-all duration-300 z-50 ${isOpen ? 'bg-[#1A1A1B] text-white rotate-90 shadow-lg' : 'bg-slate-100 text-slate-600'
+            className={`md:hidden w-11 h-11 flex items-center justify-center rounded-full transition-all duration-300 z-[120] ${isOpen ? 'bg-[#1A1A1B] text-white rotate-90 shadow-lg' : 'bg-slate-100 text-slate-600'
               }`}
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
@@ -154,7 +154,7 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation Drawer */}
         <div
-          className={`md:hidden fixed inset-x-4 top-[90px] bg-white rounded-[2.5rem] shadow-[0_30px_70px_rgba(0,0,0,0.25)] border border-slate-100 p-6 flex flex-col transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${isOpen
+          className={`md:hidden fixed inset-x-4 top-[90px] bg-white rounded-[2.5rem] shadow-[0_30px_70px_rgba(0,0,0,0.25)] border border-slate-100 p-6 flex flex-col transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] z-[110] ${isOpen
             ? 'translate-y-0 opacity-100 scale-100 pointer-events-auto'
             : '-translate-y-8 opacity-0 scale-95 pointer-events-none'
             }`}
