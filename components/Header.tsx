@@ -49,7 +49,7 @@ const Header: React.FC = () => {
   }, [isOpen]);
 
   return (
-    <div className="fixed top-0 left-0 w-full z-[100] transition-all duration-500 pointer-events-auto">
+    <div className="fixed top-0 left-0 w-full z-[100] transition-all duration-500 pointer-events-none">
       {/* Mobile Overlay Backdrop */}
       <div
         className={`fixed inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-500 md:hidden pointer-events-auto ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
       />
 
       <header
-        className={`transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] w-full ${isScrolled
+        className={`transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] w-full pointer-events-auto ${isScrolled
           ? 'bg-white/80 backdrop-blur-3xl py-3 px-6 shadow-md border-b border-white/40'
           : 'bg-white/95 backdrop-blur-sm py-4 px-6 shadow-sm border-b border-slate-100'
           }`}
