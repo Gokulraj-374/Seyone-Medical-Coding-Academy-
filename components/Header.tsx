@@ -1,32 +1,20 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
-import { authService, User } from '../services/authService';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [currentUser, setCurrentUser] = useState<User | null>(authService.getCurrentUser());
   const location = useLocation();
 
   const navLinks = [
     { name: 'Courses', path: '/courses', icon: 'fa-book-open' },
     { name: 'Stories', path: '/#success-stories', icon: 'fa-star' },
-    { name: 'Dashboard', path: '/dashboard', icon: 'fa-user-graduate' },
     { name: 'About', path: '/about', icon: 'fa-users' },
     { name: 'Contact', path: '/contact', icon: 'fa-paper-plane' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
-
-  useEffect(() => {
-    const handleAuthChange = () => {
-      setCurrentUser(authService.getCurrentUser());
-    };
-    window.addEventListener('auth-change', handleAuthChange);
-    return () => window.removeEventListener('auth-change', handleAuthChange);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +40,7 @@ const Header: React.FC = () => {
     <div className="fixed top-0 left-0 w-full z-[100] transition-all duration-500 pointer-events-none">
       {/* Mobile Overlay Backdrop */}
       <div
-        className={`fixed inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-500 md:hidden pointer-events-auto ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        className={`fixed inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-500 md:hidden ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
           }`}
         onClick={() => setIsOpen(false)}
       />
@@ -101,42 +89,15 @@ const Header: React.FC = () => {
             ))}
 
             <div className="ml-4 pl-4 border-l border-slate-200 flex items-center h-10 gap-2">
-              {currentUser ? (
-                <div className="flex items-center gap-3">
-                  <div className="flex flex-col items-end hidden lg:flex">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-[#1A1A1B]">{currentUser.name}</span>
-                    <button
-                      onClick={() => {
-                        authService.logout();
-                      }}
-                      className="text-[9px] font-bold text-slate-400 hover:text-red-500 transition-colors uppercase tracking-wider"
-                    >
-                      Log Out
-                    </button>
-                  </div>
-                  <Link to="/dashboard" className="w-9 h-9 bg-[#76BC21] rounded-full flex items-center justify-center text-white shadow-md hover:scale-105 transition-transform">
-                    <span className="font-black text-xs">{currentUser.name.charAt(0).toUpperCase()}</span>
-                  </Link>
-                </div>
-              ) : (
-                <>
-                  <Link
-                    to="/login"
-                    className="px-4 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all text-slate-600 hover:text-[#1A1A1B] hover:bg-slate-50"
-                  >
-                    Log In
-                  </Link>
-                  <Link
-                    to="/signup"
-                    className={`px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all shadow-md active:scale-95 whitespace-nowrap ${isScrolled
-                      ? 'bg-[#1A1A1B] text-white hover:bg-[#76BC21] hover:shadow-[#76BC21]/20'
-                      : 'bg-[#76BC21] text-white hover:bg-[#1A1A1B] hover:shadow-black/20'
-                      }`}
-                  >
-                    Sign Up
-                  </Link>
-                </>
-              )}
+              <Link
+                to="/contact"
+                className={`px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all shadow-md active:scale-95 whitespace-nowrap ${isScrolled
+                  ? 'bg-[#1A1A1B] text-white hover:bg-[#76BC21] hover:shadow-[#76BC21]/20'
+                  : 'bg-[#76BC21] text-white hover:bg-[#1A1A1B] hover:shadow-black/20'
+                  }`}
+              >
+                Contact Us
+              </Link>
             </div>
           </nav>
 
@@ -190,53 +151,14 @@ const Header: React.FC = () => {
             ))}
 
             <div className="pt-6 border-t border-slate-100 mt-4">
-              {currentUser ? (
-                <>
-                  <div className="flex items-center gap-4 mb-6 p-4 bg-slate-50 rounded-2xl">
-                    <div className="w-10 h-10 bg-[#76BC21] rounded-full flex items-center justify-center text-white shadow-md">
-                      <span className="font-black text-sm">{currentUser.name.charAt(0).toUpperCase()}</span>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-sm text-[#1A1A1B]">{currentUser.name}</h4>
-                      <p className="text-[10px] text-slate-400 font-medium truncate max-w-[150px]">{currentUser.email}</p>
-                    </div>
-                  </div>
-                  <Link
-                    to="/dashboard"
-                    className="flex items-center justify-center gap-3 bg-[#1A1A1B] text-white p-5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] shadow-xl shadow-black/10 active:scale-95 transition-transform mb-3"
-                  >
-                    <i className="fas fa-user-graduate"></i>
-                    Dashboard
-                  </Link>
-                  <button
-                    onClick={() => {
-                      authService.logout();
-                      setIsOpen(false);
-                    }}
-                    className="w-full flex items-center justify-center gap-3 bg-red-50 text-red-500 p-4 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] active:scale-95 transition-transform"
-                  >
-                    <i className="fas fa-sign-out-alt"></i>
-                    Log Out
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link
-                    to="/login"
-                    className="flex items-center justify-center gap-3 bg-slate-100 text-[#1A1A1B] p-5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] mb-3 active:scale-95 transition-transform"
-                  >
-                    <i className="fas fa-sign-in-alt"></i>
-                    Log In
-                  </Link>
-                  <Link
-                    to="/signup"
-                    className="flex items-center justify-center gap-3 bg-[#1A1A1B] text-white p-5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] shadow-xl shadow-black/10 active:scale-95 transition-transform"
-                  >
-                    <i className="fas fa-user-plus"></i>
-                    Sign Up
-                  </Link>
-                </>
-              )}
+              <Link
+                to="/contact"
+                className="flex items-center justify-center gap-3 bg-[#1A1A1B] text-white p-5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] shadow-xl shadow-black/10 active:scale-95 transition-transform"
+                onClick={() => setIsOpen(false)}
+              >
+                <i className="fas fa-paper-plane"></i>
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>
